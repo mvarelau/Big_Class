@@ -157,3 +157,139 @@ else:
 ```
 At the time I ask the user to enter the atreibutres of the lines, I have the 4 corners, so I put them in a list, and then index that list to put the arguments in the class rectangle.
 lenght
+# Restaurant
+Restaurant scenario: You want to design a program to calculate the bill for a customer's order in a restaurant.
+* Define a base class MenuItem: This class should have attributes like name, price, and a method to calculate the total price.
+* Create subclasses for different types of menu items: Inherit from MenuItem and define properties specific to each type (e.g., Beverage, Appetizer, MainCourse).
+* Define an Order class: This class should have a list of MenuItem objects and methods to add items, calculate the total bill amount, and potentially apply specific discounts based on the order composition.
+```python
+class MenuItem:
+    def __init__(self,name:str,price:float, description:str):
+        self.name = name
+        self.price = price
+        self.description = description
+
+class Veberage(MenuItem):#Kind is cold or hot 
+    def __init__(self,name:str,price:float, description:str, Kind=str):
+        super().__init__(name,price,description)
+        self.Kind=Kind 
+
+class BreakFast(MenuItem):
+    def __init__(self,name:str,price:float, description:str, Flavor:str):
+        super().__init__(name,price,description)
+        self.flabour= Flavor
+
+class Lunch(MenuItem):#Kind is for example, executive, current or menu 
+    def __init__(self,name:str,price:float, description:str, protein:str):
+        super().__init__(name,price,description)
+        self.protein:protein
+
+
+class Order:
+    def __init__(self, item:MenuItem, Order_list):
+        self.item=item
+        self.Order_list=Order_list
+
+    def Totall_Amount(self, Order_List):       
+        Price_List=[]
+        for x in Order_List:
+            i = x.price
+            Price_List.append(i)
+        suma=sum(Price_List)
+        return suma 
+    def apply_discounts(self,Order_List):
+        Total_amount= Order.Totall_Amount(Order,Order_List=Order_List)
+        if len(Order_List)>=4:
+            Total_amount= Total_amount-(Total_amount*0.01)
+            print(Total_amount)
+        else:
+            print("You dont have a discount")
+    
+    
+
+
+
+if __name__=="__main__":
+#Create menu 
+#VEBERAGE 
+#Cold Veberage: 
+    Strawberry =Veberage(name="Straberry Juice", price=5,
+                     description="Get inspired by the fresh taste of Strawberry Juice, Cold and refreshing.", Kind="Cold")
+    Mango= Veberage(name="Mango Juice", price= 5, 
+                description="Get inspired by the fresh flavor of Jugo Mago, cold and refreshing.",Kind="cold" )
+    Lemonade= Veberage(name="Normal Lemonade", price=4, 
+                             description="Feeling dry? A Lemonade is the best chioce", Kind="Cold")
+    Coco_Lemonade=Veberage(name="Coco Lemonade", price=4, 
+                                 description="Feeling dry? A Coco Lemonade is the best chioce to feel fresh",Kind="Cold")
+    Cocacola= Veberage(name="Cocacola", price=5,
+                     description="Iced Coke", Kind="Cold")
+
+#Hot Veberage
+    Coffe= Veberage(name="Coffe", price=4,
+                     description="Perfect to digest an exelent luch", Kind="Hot")
+    Tea=Veberage(name="Hot Tea", price=4,
+                     description="Perfect to relax after lunch", Kind="Hot")
+    Chocolat=Veberage(name="Hot Chocolate", price=6,
+                     description="Hot chocolate with marshmallows to be cozy", Kind="Hot")
+
+
+# Breakfast
+    Sirup_pancakes= BreakFast(name="Sirup_Pancakes", price=15,
+                     description="Sirup pancakes with fruit", Flavor="Sweet")
+    
+    Nutella_pancakes = BreakFast(name="Nutella_Pancakes", price=15,
+                     description="Nutella pancakes with fruit", Flavor="Sweet")
+    
+    eggs=BreakFast(name="Eggs", price=13,
+                     description="Beaf creps with cheese", Flavor="Salty")
+    
+#Lunch
+    beaf_creps=Lunch(name="Beaf Creps", price=13,
+                     description="Nutella pancakes with fruit", protein="Beaf")
+    
+    ham_creps=Lunch(name="Ham creps", price=13,
+                     description="Nutella pancakes with fruit", protein="Ham")
+    
+#Create order
+    First_Order:Order=[Strawberry,Coffe, Nutella_pancakes]
+    Price= Order.Totall_Amount(Order, First_Order)
+    
+
+
+    Second_Order:Order=[Cocacola,Chocolat,Sirup_pancakes,eggs]
+    Price= Order.apply_discounts(Order,Second_Order)
+    print(Price)
+```
+I created the big class, and the the other clases Inherence form it. Each new class has a diferent atribute than the MenuItem class
+
+
+
+
+
+
+    
+
+
+
+    
+
+    
+        
+
+
+        
+
+    
+
+        
+        
+        
+        
+        
+            
+
+
+
+
+
+
